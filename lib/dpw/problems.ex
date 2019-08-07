@@ -1,7 +1,7 @@
 defmodule Dpw.Problems do
   
   alias Dpw.Repo
-  alias Dpw.Problems.{Problem, Vote, Update}
+  alias Dpw.Problems.{Problem, Update}
 
   import Ecto.Query
 
@@ -24,13 +24,13 @@ defmodule Dpw.Problems do
   end
 
   def delete_problem(problem) do
-    from(update in Update, where: update.problem_id === ^problem.id)
+    from(update in Update, where: update.problem_id == ^problem.id)
     |> Repo.delete()
     Repo.delete(problem)
   end
 
   def list_updates_for_problem(problem) do
-    from(update in Update, where: update.problem_id === ^problem.id)
+    from(update in Update, where: update.problem_id == ^problem.id)
     |> Repo.all()
   end
 
@@ -42,7 +42,7 @@ defmodule Dpw.Problems do
 
   def update_update_post(update, attributes) do
     Update.changeset(update, attributes)
-    |> Repo.udpate()
+    |> Repo.update()
   end
 
   def delete_update_post(update) do

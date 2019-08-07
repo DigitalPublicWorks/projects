@@ -1,7 +1,7 @@
 defmodule DpwWeb.ProblemController do
   use DpwWeb, :controller
 
-  alias DpwWeb.Problems
+  alias Dpw.Problems
 
   def index(conn, _params) do
     render(conn, "index.html")
